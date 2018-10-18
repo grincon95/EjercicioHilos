@@ -28,7 +28,7 @@ public class TestStock {
 
         for (String empresa:linea) {
             StockRetriever stock =new StockRetriever();
-            price=price.add(stock.getStockRetriever());
+            //price=price.add(stock.getStockRetriever());
 
         }
         Fin=System.nanoTime();
@@ -38,7 +38,7 @@ public class TestStock {
 
         System.out.println(((Fin-Inicio)/1000000000));
         System.out.println((Inicio/1000000000)+"-"+(Fin/1000000000));
-        
+
 
 
     } //main
