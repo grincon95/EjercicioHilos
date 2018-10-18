@@ -1,20 +1,22 @@
 package mx.com.superq.cursos.threads;
+import yahoofinance.Stock;
 
-import javax.xml.bind.PrintConversionEvent;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.Time;
 import java.util.List;
 
 public class TestStock {
+
+    public static  BigDecimal suma=new BigDecimal(0.0);
 
     public static void main(String[]args)throws IOException {
 
 
   long Inicio=System.nanoTime();
   long Fin=System.nanoTime();
+
 
         String file="/Users/grincon/IdeaProjects/EjercicioHilos/src/test/resources/list.txt";
 
@@ -25,10 +27,8 @@ public class TestStock {
         Inicio=System.nanoTime();
 
         for (String empresa:linea) {
-
-            StockRetriever stock =new StockRetriever(empresa);
+            StockRetriever stock =new StockRetriever();
             price=price.add(stock.getStockRetriever());
-
 
         }
         Fin=System.nanoTime();
@@ -38,8 +38,9 @@ public class TestStock {
 
         System.out.println(((Fin-Inicio)/1000000000));
         System.out.println((Inicio/1000000000)+"-"+(Fin/1000000000));
+        
 
 
-    } //
+    } //main
 
 }//fin de la clase

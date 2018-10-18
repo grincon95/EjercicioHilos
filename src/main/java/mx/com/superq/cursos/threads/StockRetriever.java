@@ -9,9 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class StockRetriever  {
+public class StockRetriever implements Runnable {
 
    private String company;
+
+   public StockRetriever() {
+
+    }
 
 
 //constructor
@@ -20,15 +24,28 @@ public StockRetriever(String company) {
    this.company=company;
 }
 
+    @Override
+    public void run() {
 
-  public BigDecimal getStockRetriever()throws IOException {
-    Stock stock;
-    BigDecimal price;
-    stock= YahooFinance.get(company);
-    price=stock.getQuote().getPrice();
-  // stock.print();
-return price;
-  }
+    try {
+        getStockRetriever();
+        System.out.println(getStockRetriever()+"-"+Thread.currentThread().getName());
+    }catch (Exception e){
+
+    }//catch
+     }//fin Run
+
+        public BigDecimal getStockRetriever ()throws IOException {
+            Stock stock;
+            BigDecimal price;
+            stock = YahooFinance.get(company);
+            price = stock.getQuote().getPrice();
+            // stock.print();
+            return price;
+        }//fin getStockRetriever
+
+
+
 
 
     public void setCompany(String company) {
@@ -39,5 +56,6 @@ return price;
 
         return company;
     }
+
 
 }//fin de la clase
